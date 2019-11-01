@@ -1,0 +1,1213 @@
+#: import TreeViewLabel kivy.uix.treeview.TreeViewLabel 
+
+  
+
+<Display>: 
+
+    BoxLayout: 
+
+        orientation: "vertical" 
+
+         
+
+        BoxLayout: 
+
+            size_hint: 1, None 
+
+            height: '48dp' 
+
+            Button: 
+
+                text: 'Migration' 
+
+                on_release: sm.current = 'screen_one' 
+
+                background_color: 0.93, 0.93, 0.93     
+
+            Button: 
+
+                text: 'Admin' 
+
+                on_release: sm.current = 'screen_two' 
+
+                background_color: 0.93, 0.93, 0.93 
+
+        ScreenManager: 
+
+            id: sm 
+
+            Screen_One: 
+
+            Screen_Two: 
+
+  
+
+<Screen_One>: 
+
+    name: 'screen_one' 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93, 0.8 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size         
+
+  
+
+    GridLayout: 
+
+        padding: 10,10 
+
+        cols:10 
+
+        padding_top: 20 
+
+        row_default_height:50 
+
+        row_force_default: True 
+
+        Label: 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 40 
+
+            foreground_color: 0,0,1,1 
+
+            text: 'From:' 
+
+        TextInput: 
+
+            size_hint: None, None 
+
+            height: 35 
+
+            width: 150 
+
+            id: start_field 
+
+            multiline: False 
+
+             
+
+        Label: 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 40 
+
+            text: 'To:' 
+
+            foreground_color: 0,0,1,1 
+
+        TextInput: 
+
+            size_hint: None, None 
+
+            height: 35 
+
+            width: 150 
+
+            id: end_field 
+
+            multiline: False 
+
+             
+
+        Label: 
+
+            size_hint: None, None 
+
+            height:40 
+
+            width: 55 
+
+            foreground_color: 0,0,1,1 
+
+            text: 'Range:' 
+
+        TextInput: 
+
+            size_hint: None, None 
+
+            height: 35 
+
+            width: 150 
+
+            id: range_field 
+
+            multiline: False 
+
+        Label: 
+
+            text:  "" 
+
+            size_hint: None, None 
+
+            width:150 
+
+  
+
+             
+
+        Button: 
+
+            id: f1_but 
+
+            text: 'Start' 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 200 
+
+            background_color: (0, 0.517, 0.705, 1) 
+
+            pad_x:10 
+
+            on_press: root.get_details() 
+
+        Button: 
+
+            id: f2_but 
+
+            text: 'Clear' 
+
+            size_hint: None,None 
+
+            width: 200 
+
+            height: 40 
+
+            background_color: (1, 0.517, 0.705, 1)         
+
+            on_press: root.clean() 
+
+        Button: 
+
+            id: f3_but 
+
+            text: 'Exit' 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 120 
+
+            background_color: (1, 0.002, 0, 1) 
+
+            on_press: root.Exit() 
+
+         
+
+                 
+
+  
+
+<Screen_Two>: 
+
+    name: 'screen_two' 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size 
+
+    BoxLayout: 
+
+        width: 130 
+
+        BoxLayout: 
+
+            orientation: "vertical" 
+
+            width: 150 
+
+            size_hint_x: None 
+
+            Button: 
+
+                padding: 10,10 
+
+                size_hint_y: None 
+
+                height: '60' 
+
+                text: 'Email' 
+
+                halign: 'left' 
+
+                on_release: sm1.current = 'screen_third' 
+
+            Button: 
+
+                padding: 10,10 
+
+                size_hint_y: None 
+
+                height: '60' 
+
+                text: 'Subject' 
+
+                halign: 'left' 
+
+                on_release: sm1.current = 'screen_fourth' 
+
+            Button: 
+
+                padding: 10,10 
+
+                size_hint_y: None 
+
+                height: '60' 
+
+                halign: 'left' 
+
+                text: 'DataBase' 
+
+                on_release: sm1.current='screen_fifth' 
+
+            Button: 
+
+                padding: 10,10 
+
+                size_hint_y: None 
+
+                height: '60' 
+
+                halign: 'center' 
+
+                text: 'Elasticsearch' 
+
+                on_release: sm1.current = 'screen_six' 
+
+            Button: 
+
+                padding: 10,10 
+
+                size_hint_y: None 
+
+                height: '60' 
+
+                text: 'Collections' 
+
+                halign: 'left' 
+
+                on_release: sm1.current = 'screen_seven' 
+
+            Button: 
+
+                padding: 10,10 
+
+                size_hint_y: None 
+
+                height: '60' 
+
+                text: 'Parsing API' 
+
+                halign: 'left' 
+
+                on_release: sm1.current='screen_eight' 
+
+                 
+
+            Button: 
+
+             
+
+             
+
+        ScreenManager: 
+
+            id: sm1 
+
+            Screen_Third: 
+
+            Screen_Fourth: 
+
+            Screen_Fifth: 
+
+            Screen_Six: 
+
+            Screen_Seven: 
+
+            Screen_Eight: 
+
+             
+
+<Screen_Third>: 
+
+    name: "screen_third" 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size 
+
+  
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height: 50 
+
+        row_force_default: True 
+
+         
+
+        TextInput: 
+
+            id: exclude_email_id  
+
+            size_hint: None, None 
+
+            width: 350 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter the Subject to be Exluded" 
+
+        Button: 
+
+            text: "Add" 
+
+            size_hint: None, None 
+
+            width: 100 
+
+            height: 40 
+
+            on_press: root.add() 
+
+  
+
+    GridLayout: 
+
+        cols:2 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height: 850 
+
+        row_force_default: True 
+
+        TextInput: 
+
+            id: exclude_email_view 
+
+            size_hint: None, None 
+
+            width:350 
+
+            height:700 
+
+            foreground_color: (0, 0.517, 0.705, 1) 
+
+            multiline: True 
+
+            hint_text: "" 
+
+        Button: 
+
+            text: "Clear" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 100 
+
+            on_press: root.clear() 
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height: 950 
+
+        row_force_default: True         
+
+        Button: 
+
+            text: "SAVE" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 450 
+
+            background_color: (0, 0.9, 0.1, 1) 
+
+            on_press: root.save() 
+
+             
+
+  
+
+<Screen_Fourth>: 
+
+    name: "screen_fourth" 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size 
+
+     
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height: 50 
+
+        row_force_default: True 
+
+         
+
+        TextInput: 
+
+            id: exclude_subject_id  
+
+            size_hint: None, None 
+
+            width: 350 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter the Subject to be Exluded" 
+
+        Button: 
+
+            text: "Add" 
+
+            size_hint: None, None 
+
+            width: 100 
+
+            height: 40 
+
+            on_press: root.add() 
+
+             
+
+    GridLayout: 
+
+        cols:2 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height:850 
+
+        row_force_default: True 
+
+        TextInput: 
+
+            id: exclude_subject_view 
+
+            size_hint: None, None 
+
+            height:700 
+
+            width:350 
+
+            foreground_color: (0, 0.517, 0.705, 1) 
+
+            multiline: True 
+
+            hint_text: "" 
+
+  
+
+        Button: 
+
+            text: "Clear" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 100 
+
+            on_press: root.clear() 
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height: 950 
+
+        row_force_default: True     
+
+        Button: 
+
+            text: "SAVE" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 450 
+
+            background_color: (0, 0.9, 0.1, 1) 
+
+            on_press: root.save() 
+
+  
+
+             
+
+<Screen_Fifth>: 
+
+    name: "screen_fifth" 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size 
+
+  
+
+    GridLayout: 
+
+        cols: 2 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height:50 
+
+        row_force_default: True 
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 265 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text: "CONNECTION" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: connection_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height:40 
+
+            multiline: False 
+
+            hint_text: "Enter Conn" 
+
+             
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 225 
+
+            height:40 
+
+            font_size:15 
+
+            color: 0,0,1,1 
+
+            text:"SERVER" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: server_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter Server Name" 
+
+     
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 250 
+
+            height:40 
+
+            font_size: 15 
+
+            padding: 40,40 
+
+            color: 0, 0, 1, 1 
+
+            text: "DATABASE" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: database_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter DataBase Name" 
+
+         
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 225 
+
+            height:40 
+
+            font_size:15 
+
+            color: 0,0,1,1 
+
+            text:"USERID" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: user_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter user id"     
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 250 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text: "PASSWORD" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: password_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "enter database password" 
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 575,10 
+
+        padding_top: 20 
+
+        row_default_height: 350 
+
+        row_force_default: True     
+
+        Button: 
+
+            text: "SAVE" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 100 
+
+            background_color: (0, 0.9, 0.1, 1) 
+
+            on_press: root.save() 
+
+  
+
+<Screen_Six>: 
+
+  
+
+    name: "screen_six" 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size 
+
+  
+
+    GridLayout: 
+
+        cols: 2 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height:50 
+
+        row_force_default: True 
+
+  
+
+        Label: 
+
+            size_hint: None, None 
+
+            width:200 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text: "ENDPOINT" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: endpoint_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height:40 
+
+            multiline: False 
+
+            hint_text: "Enter the Endpoint" 
+
+             
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 300 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text:"CANDIDATE COLLECTION" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: candidate_collection_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter candidate collection name" 
+
+  
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 285 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text:"CONTACT COLLECTION" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: contact_collection_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter contact collection name" 
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 608,10 
+
+        padding_top: 20 
+
+        row_default_height: 275 
+
+        row_force_default: True     
+
+        Button: 
+
+            text: "SAVE" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 100 
+
+            background_color: (0, 0.9, 0.1, 1) 
+
+            on_press: root.save() 
+
+<Screen_Seven>: 
+
+  
+
+    name: "screen_seven" 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size 
+
+    GridLayout: 
+
+        cols: 2 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height:50 
+
+        row_force_default: True 
+
+  
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 295 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text: "CANDIDATE STORE" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: candidate_store_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height:40 
+
+            multiline: False 
+
+            hint_text: "Enter the Candidate collection name" 
+
+             
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 280 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text:"CONTACT STORE" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: contact_store_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height: 40 
+
+            multiline: False 
+
+            hint_text: "Enter Conatct collection name" 
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 605,10 
+
+        padding_top: 20 
+
+        row_default_height: 200 
+
+        row_force_default: True     
+
+        Button: 
+
+            text: "SAVE" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 100 
+
+            background_color: (0, 0.9, 0.1, 1) 
+
+            on_press: root.save() 
+
+  
+
+<Screen_Eight>: 
+
+  
+
+    name: "screen_eight" 
+
+    canvas.before: 
+
+        Color: 
+
+            rgba: 0.93, 0.93, 0.93 
+
+        Rectangle: 
+
+            pos: self.pos 
+
+            size: self.size 
+
+    GridLayout: 
+
+        cols: 2 
+
+        padding: 10,10 
+
+        padding_top: 20 
+
+        row_default_height:50 
+
+        row_force_default: True 
+
+  
+
+        Label: 
+
+            size_hint: None, None 
+
+            width: 300 
+
+            height:40 
+
+            font_size: 15 
+
+            color: 0,0,1,1 
+
+            text: "RESUME PARSING API" 
+
+            padding_x: 10 
+
+        TextInput: 
+
+            id: resume_parsing_id 
+
+            size_hint: None, None 
+
+            width: 400 
+
+            height:40 
+
+            multiline: False 
+
+            hint_text: "Enter the resume parsing API" 
+
+    GridLayout: 
+
+        cols:1 
+
+        padding: 610,10 
+
+        padding_top: 20 
+
+        row_default_height: 125 
+
+        row_force_default: True     
+
+        Button: 
+
+            text: "SAVE" 
+
+            size_hint: None, None 
+
+            height: 40 
+
+            width: 100 
+
+            background_color: (0, 0.9, 0.1, 1) 
+
+            on_press: root.save() 
+
+             
+
+<p>: 
+
+    Label: 
+
+        text: "Entered details are Incorrect!" 
+
+        size_hint: 0.6,0.2 
+
+        pos_hint: {'x': 0.2, 'top':1} 
+
+        foreground_color: (1, 0, 0.705, 1) 
+
+   
