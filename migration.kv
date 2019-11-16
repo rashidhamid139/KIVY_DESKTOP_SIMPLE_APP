@@ -1,0 +1,602 @@
+
+
+#: import TreeViewLabel kivy.uix.treeview.TreeViewLabel
+#: import threading threading
+#: import ScrollView kivy.uix.scrollview.ScrollView
+<Display>:
+	BoxLayout:
+		orientation: "vertical"
+		padding_x: 20
+		BoxLayout:
+			size_hint_y: None
+			height: 25
+			Label:
+			    text: 'Migration'
+			    size_hint_x: 0.8
+			Button:
+				text: 'Home'
+				on_release: sm.current = 'migration_window'
+				background_color: 0.93, 0.93, 0.93
+				size_hint_x: 0.1
+            Button:
+                text: 'Admin'
+                on_release: sm.current = 'admin_screen'
+				background_color: 0.93, 0.93, 0.93
+				size_hint_x: 0.1
+				last_touch: True
+
+        ScreenManager:
+            id: sm
+            MigrationWindow:
+            Admin_Screen:
+
+
+<MigrationWindow>:
+    name: 'migration_window'
+    orientation:'vertical'
+    spacing: 5
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: 70
+        canvas.before:
+            Color:
+                rgba: (0.06,0.45,0.45,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        BoxLayout:
+            id: header
+            size_hint_y: None
+            height: 30
+            canvas.before:
+                Color:
+                    rgba: (0.06,0.45,0.45,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            Label:
+                text: "From"
+                bold: True
+                size_hint_x: 0.08
+            TextInput:
+                id: start_field
+                hint_text: "YYmmddHHmm"
+                size_hint_x:0.2
+                multiline: False
+                focus: True
+                write_tab: False
+            Label:
+                text: "To"
+                bold: True
+                size_hint_x: 0.06
+            TextInput:
+                id: end_field
+                hint_text: "YYmmddHHmm"
+                size_hint_x: 0.2
+                multiline: False
+                focus: True
+                write_tab: False
+            Label:
+                text: "Range"
+                bold: True
+                size_hint_x: 0.08
+            TextInput:
+                id: range_field
+                hint_text: "Range"
+                size_hint_x: 0.1
+                multiline: False
+                focus: True
+                write_tab: False
+            Label:
+                size_hint_x: 0.1
+
+            Button:
+                text: 'Start'
+                bold: True
+                background_color: (0.65,0.45,0.65,1)
+                size_hint_x: 0.1
+                on_press: root.thread()
+
+            Button:
+                text: 'Clear'
+                bold: True
+                background_color: (0.99,0.45,0.45,1)
+                size_hint_x: 0.1
+                on_press: threading.Thread(root.clean())
+            Button:
+                text: 'Exit'
+                bold: True
+                background_color: (1,0,0,1)
+                size_hint_x: 0.1
+                on_press: root.exit()
+    BoxLayout:
+        size_hint_y: None
+        height: 30
+        canvas.before:
+            Color:
+                rgba: (0.06,0.45,0.45,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            id: total_records_id
+            text: "Total Records Found:"
+            bold: True
+            size_hint_x: 0.25
+            font_size: 15
+            color: 0.22,0.77,0.33,1
+        Label:
+            size_hint_x: 0.5
+        Label:
+            id: total_migrated_id
+            text: "Migrated:"
+            bold: True
+            size_hint_x: 0.25
+            font_size: 15
+            color: 0.22,0.77,0.33,1
+
+    BoxLayout:
+        size_hint_x: 1
+        BoxLayout:
+            id: add_to_cart
+            orientation: 'vertical'
+            BoxLayout:
+                size_hint_y: None
+                height: 30
+                canvas.before:
+                    Color:
+                        rgba: (0.06,0.45,0.45,1)
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                Label:
+                    text_size: self.size
+                    halign: 'right'
+                    text:'ID'
+                    size_hint_x: .03
+                Label:
+                    text:'Email'
+                    size_hint_x: 0.20
+                Label:
+                    text: 'Status'
+                    size_hint_x: .14
+                Label:
+                    text: 'ArchiveDate'
+                    size_hint_x: .15
+                Label:
+                    text: 'Type'
+                    size_hint_x: .15
+                Label:
+                    text: 'SentDate'
+                    size_hint_x: 0.15
+                Label:
+                    text: "MessageId"
+                    size_hint_x: 0.18
+            ScrollView:
+                GridLayout:
+                    id: products
+                    cols:1
+
+
+
+
+    BoxLayout:
+        id: footer
+        size_hint_y: None
+        height: 30
+        canvas.before:
+            Color:
+                rgba: (0.45,0.22,0.56,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: 'HiTech'
+
+
+
+
+
+<p>:
+	Label:
+		text: "Entered details are Incorrect!"
+		size_hint: 0.6,0.2
+		pos_hint: {'x': 0.2, 'top':1}
+		color: (1, 0, 0.2, 1)
+		markup: True
+
+
+<Admin_Screen>:
+	name: 'admin_screen'
+	canvas.before:
+		Color:
+			rgba: 0.93, 0.93, 0.93
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	BoxLayout:
+		width: 130
+		BoxLayout:
+			orientation: "vertical"
+			width: 150
+			size_hint_x: None
+			Button:
+				padding: 10,10
+				size_hint_y: None
+				height: '40'
+				text: 'Email'
+				halign: 'left'
+				on_release: sm1.current = 'email_screen'
+			Button:
+				padding: 10,10
+				size_hint_y: None
+				height: '40'
+				halign: 'left'
+				text: 'DataBase'
+				on_release: sm1.current='database_screen'
+			Button:
+				padding: 10,10
+				size_hint_y: None
+				height: '40'
+				halign: 'center'
+				text: 'Elasticsearch'
+				on_release: sm1.current = 'es_screen'
+			Button:
+				padding: 10,10
+				size_hint_y: None
+				height: '40'
+				text: 'Collections'
+				halign: 'left'
+				on_release: sm1.current = 'collection_screen'
+			Button:
+				padding: 10,10
+				size_hint_y: None
+				height: '40'
+				text: 'API'
+				halign: 'left'
+				on_release: sm1.current='api_screen'
+			Button:
+
+		ScreenManager:
+			id: sm1
+            Email_Screen:
+            Database_Screen:
+            Elasticsearch_Screen:
+            Collection_Screen:
+            Api_Screen:
+
+
+<Email_Screen>:
+    name: 'email_screen'
+	canvas.before:
+		Color:
+			rgba: 0.93, 0.93, 0.93
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+
+
+
+
+
+
+
+
+
+<Database_Screen>:
+    name: 'database_screen'
+	canvas.before:
+		Color:
+			rgba: 0.93, 0.93, 0.93
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+	GridLayout:
+		cols: 2
+		padding: 10,10
+		padding_top: 20
+		row_default_height:50
+		row_force_default: True
+		Label:
+			size_hint: None, None
+			width: 265
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text: "CONNECTION"
+			padding_x: 10
+		TextInput:
+			id: connection_id
+			size_hint: None, None
+			width: 400
+			height:40
+			multiline: False
+			hint_text: "Enter Conn"
+
+		Label:
+			size_hint: None, None
+			width: 225
+			height:40
+			font_size:15
+			color: 0,0,1,1
+			text:"SERVER"
+			padding_x: 10
+		TextInput:
+			id: server_id
+			size_hint: None, None
+			width: 400
+			height: 40
+			multiline: False
+			hint_text: "Enter Server Name"
+
+		Label:
+			size_hint: None, None
+			width: 250
+			height:40
+			font_size: 15
+			padding: 40,40
+			color: 0, 0, 1, 1
+			text: "DATABASE"
+			padding_x: 10
+		TextInput:
+			id: database_id
+			size_hint: None, None
+			width: 400
+			height: 40
+			multiline: False
+			hint_text: "Enter DataBase Name"
+
+		Label:
+			size_hint: None, None
+			width: 225
+			height:40
+			font_size:15
+			color: 0,0,1,1
+			text:"USERID"
+			padding_x: 10
+		TextInput:
+			id: user_id
+			size_hint: None, None
+			width: 400
+			height: 40
+			multiline: False
+			hint_text: "Enter user id"
+		Label:
+			size_hint: None, None
+			width: 250
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text: "PASSWORD"
+			padding_x: 10
+		TextInput:
+			id: password_id
+			size_hint: None, None
+			width: 400
+			height: 40
+			multiline: False
+			hint_text: "enter database password"
+
+<Elasticsearch_Screen>:
+    name: 'es_screen'
+	canvas.before:
+		Color:
+			rgba: 0.93, 0.93, 0.93
+		Rectangle:
+			pos: self.pos
+			size: self.size
+
+	GridLayout:
+		cols: 2
+		padding: 10,10
+		padding_top: 20
+		row_default_height:50
+		row_force_default: True
+
+		Label:
+			size_hint: None, None
+			width:200
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text: "ENDPOINT"
+			padding_x: 10
+		TextInput:
+			id: endpoint_id
+			size_hint: None, None
+			width: 400
+			height:40
+			multiline: False
+			hint_text: "Enter the Endpoint"
+
+		Label:
+			size_hint: None, None
+			width: 300
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text:"CANDIDATE COLLECTION"
+			padding_x: 10
+		TextInput:
+			id: candidate_collection_id
+			size_hint: None, None
+			width: 400
+			height: 40
+			multiline: False
+			hint_text: "Enter candidate collection name"
+
+		Label:
+			size_hint: None, None
+			width: 285
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text:"CONTACT COLLECTION"
+			padding_x: 10
+		TextInput:
+			id: contact_collection_id
+			size_hint: None, None
+			width: 400
+			height: 40
+			multiline: False
+			hint_text: "Enter contact collection name"
+	GridLayout:
+		cols:1
+		padding: 608,10
+		padding_top: 20
+		row_default_height: 275
+		row_force_default: True
+		Button:
+			text: "SAVE"
+			size_hint: None, None
+			height: 40
+			width: 100
+			background_color: (0, 0.9, 0.1, 1)
+			on_press: root.save()
+
+<Collection_Screen>:
+    name: 'collection_screen'
+	canvas.before:
+		Color:
+			rgba: 0.93, 0.93, 0.93
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	GridLayout:
+		cols: 2
+		padding: 10,10
+		padding_top: 20
+		row_default_height:50
+		row_force_default: True
+
+		Label:
+			size_hint: None, None
+			width: 295
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text: "CANDIDATE STORE"
+			padding_x: 10
+		TextInput:
+			id: candidate_store_id
+			size_hint: None, None
+			width: 400
+			height:40
+			multiline: False
+			hint_text: "Enter the Candidate collection name"
+
+		Label:
+			size_hint: None, None
+			width: 280
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text:"CONTACT STORE"
+			padding_x: 10
+		TextInput:
+			id: contact_store_id
+			size_hint: None, None
+			width: 400
+			height: 40
+			multiline: False
+			hint_text: "Enter Conatct collection name"
+	GridLayout:
+		cols:1
+		padding: 605,10
+		padding_top: 20
+		row_default_height: 200
+		row_force_default: True
+		Button:
+			text: "SAVE"
+			size_hint: None, None
+			height: 40
+			width: 100
+			background_color: (0, 0.9, 0.1, 1)
+			on_press: root.save()
+
+
+
+<Api_Screen>:
+    name: 'api_screen'
+	canvas.before:
+		Color:
+			rgba: 0.93, 0.93, 0.93
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	GridLayout:
+		cols: 2
+		padding: 10,10
+		padding_top: 20
+		row_default_height:50
+		row_force_default: True
+
+		Label:
+			size_hint: None, None
+			width: 300
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text: "RESUME PARSING API"
+			padding_x: 10
+		TextInput:
+			id: resume_parsing_id
+			size_hint: None, None
+			width: 400
+			height:40
+			multiline: False
+			hint_text: "Enter the resume parsing API"
+		Label:
+			size_hint: None, None
+			width: 280
+			height:40
+			font_size: 15
+			color: 0,0,1,1
+			text: "MAIL ARCHIVA API"
+			padding_x: 10
+		TextInput:
+			id: mailarchiva_api_id
+			size_hint: None, None
+			width: 400
+			height:40
+			multiline: False
+			hint_text: "Enter the Mailarchiva API"
+	GridLayout:
+		cols:1
+		padding: 610,10
+		padding_top: 20
+		row_default_height: 150
+		row_force_default: True
+		Button:
+			text: "SAVE"
+			size_hint: None, None
+			height: 40
+			width: 100
+			background_color: (0, 0.9, 0.1, 1)
+			on_press: root.save()
+
+
+
+
+<ButtonLabel>:
+    on_press: root.change_location()
+
+<CustomRecycleView>:
+    GridLayout:
+        orientation:'vertical'
+        id: content
+        size_hint_y: None
+
+        cols:1
+
+        row_default_height: 60
+        height: self.minimum_height
