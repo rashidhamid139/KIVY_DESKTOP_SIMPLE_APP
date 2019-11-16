@@ -22,3 +22,9 @@ kivy.deps.glew
 kivy.deps.gstreamer
 kivy.deps.angle
 kivy
+
+
+
+
+
+This simple Gui will help you get started with various widgets in kivy and help youu build awesome APPS
